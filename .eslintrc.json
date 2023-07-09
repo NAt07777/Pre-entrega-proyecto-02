@@ -1,0 +1,55 @@
+{
+    "env": {
+        "es2021": true,
+        "node": true
+    },
+    "extends": "airbnb-base",
+    "overrides": [],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "ignorePatterns": ["/node_modules", ".eslintrc.json", ".gitignore", "package-lock.json", "package.json"],
+    "rules": {     
+        "max-len": ["error", { "code": 150 }],      // Uso de longitud máxima permitida (en caracteres)
+        "indent": ["error", 4],                     // uso de identación con 4 espacios
+        "no-tabs": "off",                           // uso de tabs
+        "quotes": "off",                            // Uso obligatorio de comillas símples
+        "quote-props": ["error", "as-needed"],      // Uso obligatorio de comillas símples en props
+        "dot-notation": "off",                      // Uso obligatorio de comillas dobles en índices
+        "comma-dangle":"off",                       // Uso de la coma en el final del último miembro de un objeto
+        "object-curly-newline": "off",              // Uso de la declaración de un objeto en multiples líneas
+        "no-multi-spaces": "off",                   // Uso de múltiples espacios
+        "padded-blocks": "off",                     // Uso de un salto de línea
+        "eol-last": "off",                          // Uso de salto de línea obligatorio despues de una llave
+        "linebreak-style": "off",                   // Udo de punto y coma al finalizar una instrucción
+        "spaced-comment": "off",                    // Uso de comentario múltiple de una sola línea
+        "class-methods-use-this":"off",             // Uso de this dentro de una class
+        "no-useless-constructor": "off",            // Uso de parámetro único pasado a una clase padre desde la clase hija
+        "prefer-const": "off",                      // Uso de variables con re-asignación de valor
+        "prefer-exponentiation-operator": "off",    // Uso de preferencia del operador ** de exponenciación
+        "no-plusplus":"off",                        // Uso de ++ para incrementar
+        "radix":"off",                              // Uso de sistema númerico en Number.parseInt()
+        "no-else-return":"off",                     // Uso de llaves en if-else de una línea
+        "consistent-return":"off",                  // Uso de return en funciones de flecha
+        "prefer-promise-reject-errors":"off",       // Uso de reject de una sola línea en promesas
+        "no-param-reassign":"off",                  // Uso de re-asignación del valor de un parámetro
+        "func-names":"off",                         // Uso de funciones anónimas      
+        "lines-between-class-members": [            // Uso de declaración e inicialización de propiedades
+            "error", 
+            "always", 
+            { "exceptAfterSingleLine": true }
+        ],
+        "no-underscore-dangle": [                   // Uso de guion bajo en la declaración de propiedades
+            "error",
+            { "allowAfterThis": true }
+        ],
+        "import/extensions": [                      // Uso de extensión en la importación de archivos
+            "error",
+            "always",
+            { "ignorePackages": true }
+        ],
+        "import/no-extraneous-dependencies":"off",  // Uso de control de dependencias
+        "no-console": "off"                         // Uso de console.log
+    }
+}
