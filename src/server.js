@@ -61,8 +61,8 @@ try {
 server.post('/frutas',  async (req, res) => {
     const { imagen, nombre, importe, stock}= req.body;
 
-    if(!nombre || !importe || !stock) {
-        return res.status(400).send('ERROR. Faltan datos.');
+    if(!nombre || !importe || isNaN(importe) || !stock || isNaN(stock)) {
+        return res.status(400).send('ERROR. Faltan datos o los valores ingresados no son correctos.');
     };
 
         try {
@@ -87,8 +87,8 @@ server.put('/frutas/:id', async (req, res) => {
     const {imagen, nombre, importe, stock} = req.body;
     const fruta = {nombre, importe, stock};
 
-    if(!id && !nombre && !importe && !stock) {
-        return res.status(400).send('Error, faltan datos necesarios');
+    if(!id || !nombre || !importe || isNaN(importe) || !stock || isNaN(stock)) {
+        return res.status(400).send('Error, faltan datos necesarios o los valores ingresados no son correctos.');
     };
     if(imagen) fruta.imagen = imagen;
 
