@@ -113,8 +113,12 @@ server.patch('/frutas/:id', async(req, res) => {
     try {
         const collection = await connectToCollection('frutas');
         const fruta = await collection.findOne({id: {$eq: Number(id)}});
+        
         if (!fruta) {
             res.status(400).send('No se encontro ninguna fruta con el id proporcionado.')
+        }else if (isNaN(importe)) {
+            res.status(400).send('El importe ingresado no es un número válido.')
+
         } else {
             await collection.updateOne({ id: Number(id) }, { $set: { importe: Number(importe) } });
         res.status(200).send('El importe de la fruta se ha modificado correctamente.');
