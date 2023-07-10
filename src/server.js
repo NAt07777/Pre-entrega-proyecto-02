@@ -61,7 +61,7 @@ try {
 server.post('/frutas',  async (req, res) => {
     const { imagen, nombre, importe, stock}= req.body;
 
-    if(!nombre && !importe && !stock) {
+    if(!nombre || !importe || !stock) {
         return res.status(400).send('ERROR. Faltan datos.');
     };
 
@@ -72,7 +72,6 @@ server.post('/frutas',  async (req, res) => {
             if(imagen) fruta.imagen = imagen;
 
             await collection.insertOne(fruta);
-
             res.status(201).send(JSON.stringify(fruta, null, '\t'));
         } catch (error) {
             console.log(error.message);
