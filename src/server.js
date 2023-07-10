@@ -64,7 +64,10 @@ server.post('/frutas',  async (req, res) => {
     if(!nombre || !importe || isNaN(importe) || !stock || isNaN(stock)) {
         return res.status(400).send('ERROR. Faltan datos o los valores ingresados no son correctos.');
     };
-
+    if (importe <= 0 || stock <= 0) {
+        return res.status(400).send('Error, los valores de importe y stock deben ser números positivos.');
+    };
+    
         try {
             const collection = await connectToCollection('frutas');
             let fruta = {id: await generateID(collection), nombre, importe, stock};
@@ -113,7 +116,7 @@ server.patch('/frutas/:id', async(req, res) => {
     try {
         const collection = await connectToCollection('frutas');
         const fruta = await collection.findOne({id: {$eq: Number(id)}});
-        
+
         if (!fruta) {
             res.status(400).send('No se encontro ninguna fruta con el id proporcionado.')
         }else if (isNaN(importe)) {
